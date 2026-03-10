@@ -1,0 +1,110 @@
+CLASSIFICATION ALGORITHM:
+
+ rainfall=c(123,145,165,178,180,278,216,124,222,163,223,134)
+ print(rainfall)
+ rainfall.timeseries=ts(rainfall,start=c(2025,5),frequency=12)
+ rainfall.timeseries
+ plot(rainfall.timeseries,main="rain analysis",xlab="month",ylab="rainfall")
+
+CLUSTER ALGORITHM:
+
+head(iris)
+ cobj<-na.omit(iris)
+ cobj
+ cobj$Species<-NULL
+ a<-kmeans(cobj,3)
+ a
+library(cluster)
+ clusplot(cobj,a$cluster)
+---------------------------------------------------------------------------------
+
+LOGISTIC REGRESSION:
+
+ url<-"D:/Social_Network_Ads.csv"
+ input<-read.csv(url)
+ head(input)
+summary(input)
+mtcars
+show<-glm(formula=am~hp+wt,data=mtcars,family=binomial)
+summary(show)
+plot(show)
+------------------------------------------------------------------------
+LINEAR REGRESSION:
+
+url<-"D:/data.csv"
+input<-read.csv(url)
+head(input)
+
+relationWeightHeight<-lm(Weight~Height)
+attach(input)
+relationWeightHeight <- lm(Weight ~ Height)
+summary(relationWeightHeight)
+
+plot(input$Height, input$Weight,
+main="Height vs Weight",
+xlab="Height",
+ylab="Weight",
+pch=16,
+col="blue")
+
+abline(relationWeightHeight, col="red", lwd=2)
+
+predicted <- predict(relationWeightHeight, input)
+head(predicted)
+
+coef(relationWeightHeight)
+
+ plot(input$Height, input$Weight,
+ main="Height vs Weight with reg line",
+ xlab="Height",
+ylab="Weight",
+ pch=16,
+ col="blue")
+ lines(input$Height,predicted, col="red", lwd=2)
+---------------------------------------------------------------------------
+using python/pandas library 
+
+if pandas lib not intall then run command in cmd
+pip install pandas
+python file and csv file have same directory 
+
+import pandas
+file=pandas.read_csv("panda.csv")
+print(file)
+
+
+print("total salary is :",file["salary"].sum(),"rupees")
+print("average salary is :", file["salary"].mean(),"rupees")
+print("average salary is :", file["salary"].max(),"rupees")
+print("average salary is :", file["salary"].min(),"rupees")
+print("average salary is :", file["age"].min(),"rupees")
+
+import matplotlib.pyplot as plt
+plt.bar(file["age"],file["salary"])
+plt.xlabel("age")
+plt.ylabel("salary")
+plt.title("age salary relationshiip")
+plt.show()
+---------------------------------------------------------------------------------------
+perform data visualization using sales data
+
+install for numpy lib 
+pip install numpy
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+data={
+'category':['electronics','clothing','grociries','furniture'],
+ 'sales': np.random.randint(500,2000,4)
+ }
+df=pd.DataFrame(data)
+print(df)
+
+plt.bar(df['category'],df['sales'])
+plt.title('sales by category')
+plt.xlabel('category')
+plt.ylabel('sales')
+plt.show()
+
