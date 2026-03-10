@@ -1,7 +1,8 @@
 pip install pandas
 
 python -m pip install pandas
-
+install for numpy lib 
+pip install numpy
 
 
 pip install matplotlib
@@ -9,3 +10,4 @@ pip install matplotlib
 
 
 pip install scikit-learn
+
