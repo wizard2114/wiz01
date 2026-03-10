@@ -1,0 +1,11 @@
+pip install pandas
+
+python -m pip install pandas
+
+
+
+pip install matplotlib
+
+
+
+pip install scikit-learn
