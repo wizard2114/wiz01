@@ -1,0 +1,82 @@
+Create Pivot Table
+Step 1
+
+Select the entire data table
+
+Example:
+
+A1:C13
+
+(Include Student Name, Subject, Marks)
+
+Step 2
+
+Go to:
+
+Insert → PivotTable
+
+Choose:
+
+New Worksheet
+
+Click OK
+
+2️⃣ Arrange Pivot Table Fields
+
+You will see PivotTable Fields panel.
+
+Drag fields like this:
+
+Area	Field
+Rows	Subject
+Values	Marks
+
+Now click the dropdown on Sum of Marks → Value Field Settings
+
+Change:
+
+Sum → Average
+
+Click OK
+
+✅ Result will look like:
+
+Subject	Average Marks
+English	79.5
+Math	83.75
+Science	81.75
+3️⃣ Use Filters for Individual Student
+
+Drag Student Name to:
+
+Filters
+
+Now you can select:
+
+Aarav
+
+Riya
+
+Kunal
+
+Priya
+
+to see their marks only.
+
+4️⃣ Create Pivot Chart
+
+Click anywhere inside the Pivot Table
+
+Go to:
+
+Insert → PivotChart
+
+Select:
+
+Column Chart
+
+or
+
+Bar Chart
+
+Press OK
