@@ -1,0 +1,53 @@
+Step 1:-  Create a Staging Database 
+First, create a staging database to store raw sales data. 
+CREATE DATABASE Sales_Staging; 
+USE Sales_Staging; 
+Step 2:- Create Staging Tables 
+Create tables that match the structure of raw sales data but include additional fields like load date 
+and batch ID. 
+CREATE TABLE Staging_Sales ( 
+SalesID INT PRIMARY KEY, 
+OrderDate DATE, 
+ProductName VARCHAR(100), 
+Category VARCHAR(50), 
+Region VARCHAR(50), 
+SalesAmount DECIMAL(10,2), 
+Profit DECIMAL(10,2), 
+Quantity INT, 
+LoadDate DATETIME DEFAULT CURRENT_TIMESTAMP, 
+BatchID INT );
+
+Step 3:- Load Raw Data into the Staging Table 
+Simulating data load from a CSV file, API, or external source: 
+INSERT INTO Staging_Sales (SalesID, OrderDate, ProductName, Category, Region, SalesAmount, 
+Profit, Quantity, BatchID) 
+VALUES  
+(1, '2024-01-01', 'Laptop', 'Electronics', 'North', 1200.00, 200.00, 3, 101), 
+(2, '2024-01-02', 'Smartphone', 'Electronics', 'South', 800.00, 150.00, 2, 101), 
+(3, '2024-01-03', 'Tablet', 'Electronics', 'East', 600.00, 100.00, 5, 101); 
+
+Step  4:- Perform Data Cleansing & Transformation 
+• Remove Duplicates 
+DELETE FROM Staging_Sales 
+WHERE SalesID NOT IN ( 
+SELECT MIN(SalesID) FROM Staging_Sales GROUP BY OrderDate, ProductName, Region 
+);
+
+ Handle Null Values 
+UPDATE Staging_Sales  
+SET Profit = 0  
+WHERE Profit IS NULL;
+
+Step 5:- Transfer Clean Data to the Final Sales Table 
+Move the cleaned data into the Data Warehouse (DWH). 
+INSERT INTO Final_Sales ( 
+SalesID, OrderDate, ProductName, Category, Region, SalesAmount, Profit, Quantity 
+) 
+SELECT  
+SalesID, OrderDate, ProductName, Category, Region, SalesAmount, Profit, Quantity 
+FROM Staging_Sales; 
+
+Step 6:- Archive or Delete Processed Data 
+Once data is loaded, either archive it or delete it from the staging area. 
+DELETE FROM Staging_Sales WHERE BatchID = 101; 
+
