@@ -23,10 +23,14 @@ LOGISTIC REGRESSION:
  url<-"D:/Social_Network_Ads.csv"
  input<-read.csv(url)
  head(input)
+
 summary(input)
-mtcars
+
+mtcars (optional)
+
 show<-glm(formula=am~hp+wt,data=mtcars,family=binomial)
 summary(show)
+
 plot(show)
 ------------------------------------------------------------------------
 LINEAR REGRESSION:
@@ -107,4 +111,5 @@ plt.title('sales by category')
 plt.xlabel('category')
 plt.ylabel('sales')
 plt.show()
+
 
