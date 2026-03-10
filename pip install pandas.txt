@@ -11,3 +11,6 @@ pip install matplotlib
 
 pip install scikit-learn
 
+
+
+=PMT(annual_rate/12, years*12, -loan_amount)
